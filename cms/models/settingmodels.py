@@ -16,6 +16,7 @@ class UserSettings(models.Model):
         verbose_name = _('user setting')
         verbose_name_plural = _('user settings')
         app_label = 'cms'
+        unique_together = ('user', 'language')
 
     def __str__(self):
         return force_unicode(self.user)
