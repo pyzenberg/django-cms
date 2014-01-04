@@ -11,9 +11,6 @@ from django.db.models import Q
 from django.utils.translation import ugettext_lazy as _
 
 
-User = get_user_model()
-
-
 try:
     from threading import local
 except ImportError:
@@ -199,6 +196,8 @@ def get_subordinate_users(user):
 
     # TODO: try to merge with PagePermissionManager.subordinate_to_user()
 
+    User = get_user_model()
+    
     if user.is_superuser or \
             GlobalPagePermission.objects.with_can_change_permissions(user):
         return User.objects.all()
